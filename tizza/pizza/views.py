@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from django.http import JsonResponse
 
-# Create your views here.
+from .models import Pizza
+
+
+def index(request, pid):
+    pizza = Pizza.objects.get(id=pid)
+    data = {
+        'id': pizza.id,
+        'title': pizza.title,
+        'description': pizza.description
+    }
+
+    return JsonResponse(data)
