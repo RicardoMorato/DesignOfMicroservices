@@ -5,10 +5,16 @@ from .models import Pizza
 
 def index(request, pid):
     pizza = Pizza.objects.get(id=pid)
-    data = {
-        'id': pizza.id,
-        'title': pizza.title,
-        'description': pizza.description
-    }
+    if pizza:
+        data = {
+            'id': pizza.id,
+            'title': pizza.title,
+            'description': pizza.description
+        }
 
-    return JsonResponse(data)
+        return JsonResponse(data)
+    else:
+        return JsonResponse({
+            'status': 'error',
+            'message': 'Pizza not found'
+        }, status=404)
