@@ -1,6 +1,6 @@
 from django.db import models
 
-# from user.models import UserProfile
+from user.models import UserProfile
 
 
 class Pizza(models.Model):
@@ -8,12 +8,12 @@ class Pizza(models.Model):
     description = models.CharField(max_length=240)
 
 
-# class Pizzeria(models.Model):
-#     owner = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-#     address = models.CharField(max_length=512)
-#     phone = models.CharField(max_length=40)
+class Pizzeria(models.Model):
+    owner = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    address = models.CharField(max_length=512)
+    phone = models.CharField(max_length=40)
 
 
-# class Likes(models.Model):
-#     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-#     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+class Likes(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
