@@ -4,8 +4,14 @@ from user.models import UserProfile
 
 
 class Pizza(models.Model):
+    PIZZA_TYPES = (
+        ('MEET', 'Has Meet'),
+        ('VEGGIE', 'Vegetarian'),
+        ('VEGAN', 'Vegan')
+    )
     title = models.CharField(max_length=120)
     description = models.CharField(max_length=240)
+    pizza_type = models.CharField(max_length=240, choices=PIZZA_TYPES, default=('MEET', 'Has Meet'))
 
 
 class Pizzeria(models.Model):
